@@ -1,0 +1,28 @@
+[project]
+name = "quora-clone"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "RatndeepChavan",email = "ratndeep.chavan@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^3.3.6"
+black = "^25.1.0"
+isort = "^6.0.1"
+pre-commit = "^4.2.0"
+
+[tool.poetry.group.dev.dependencies.commitizen]
+version = "4.5.1"
+allow-prereleases = true
+python = "^3.12"
+markers = "platform_python_implementation == 'CPython'"
