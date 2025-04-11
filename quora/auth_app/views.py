@@ -1,23 +1,7 @@
-"""auth_app's view file to write business logic."""
-
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
-
-
-def home(request):
-    """home screen view.
-
-    Args:
-        request (WSGIRequest): request object received from client
-
-    Returns:
-        HTMLTemplate: HTML template for client with desire output
-    """
-    print(type(request))
-    return render(request, "base.html")
 
 
 class Signup(CreateView):

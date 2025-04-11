@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+<h3>{{ question.question }}</h3>
+<h6><b>{{ question.description }}</b></h6>
+<h6><u>Asked by</u> - <b>{{question.user}}</b></h6>
+
+<hr>
+<h4><u>Answers</u></h4>
+
+{% if answers %}
+<div class="list-group">
+    {% for answer in answers %}
+    <div class="list-group-item list-group-item-action">
+        <h6><i>{{ answer.answer }}</i></h6>
+        <h6><u>answered by</u> - <b>{{answer.user}}</b></h6>
+        <h6><u>Likes</u> - <b>{{ likes_count|get_item:answer.id }}</b></h6>
+        <form class="d-flex" action="{% url 'like' question_pk=question.pk answer_pk=answer.pk %}" method="POST">
+            {% csrf_token %}
+            {% if user.is_authenticated %}
+                {% if is_liked|get_item:answer.id %}
+                <h6><i><u>You liked this answer</u></i></h6>
+                {% else %}
+                <button class="btn btn-success" type="submit">Like</button>
+                {% endif %}
+            {% endif %}
+        </form>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<h6><i>No answer yet</i></h6>
+{% endif %}
+
+<hr>
+{% if user.is_authenticated %}
+<h5>Add your answer</h5>
+<form method="post">
+    <table>
+        {% csrf_token %}
+        {{ form.as_table }}
+    </table>
+    <button class="btn btn-primary" type="submit">Submit Answer</button>
+</form>
+{% endif %}
+
+<br>
+<a class="btn btn-secondary btn-sm" href="{% url 'home' %}" role="button">Home</a>
+
+{% endblock %}

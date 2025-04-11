@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h2>Post new question</h2>
+<hr>
+<form method="post">
+    <table>
+        {% csrf_token %}
+        {{ form.as_table }}
+    </table>
+    <button class="btn btn-primary" type="submit">Create</button>
+</form>
+
+<br>
+<a class="btn btn-secondary btn-sm" href="{% url 'home' %}" role="button">Home</a>
+
+{% endblock %}

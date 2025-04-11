@@ -21,6 +21,9 @@ repos:
         entry: pylint
         language: system
         types: [python]
+        exclude: migrations
+        args:
+        -   --rcfile=.pylintrc
         stages:
         -   pre-commit
 

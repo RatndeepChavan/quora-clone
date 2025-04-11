@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h2>Questions</h2>
+<hr>
+<div class="list-group">
+    {% for question in questions %}
+    <a href="{% url 'detail' pk=question.pk %}" class="list-group-item list-group-item-action">
+        {{ question.question }}
+    </a>
+    {% endfor %}
+</div>
+
+<br>
+<a href="{% url 'create' %}">Do you have any question ?? </a>
+{% endblock %}

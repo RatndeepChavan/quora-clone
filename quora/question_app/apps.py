@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 
 
-class AuthAppConfig(AppConfig):
-    """Configuration class of auth_app.
+class QuestionAppConfig(AppConfig):
+    """Configuration class of question_app.
     It is also responsible to add default id(pk) in database tables.
 
     Args:
@@ -10,4 +10,4 @@ class AuthAppConfig(AppConfig):
     """
 
     default_auto_field = "django.db.models.BigAutoField"
-    name = "auth_app"
+    name = "question_app"
